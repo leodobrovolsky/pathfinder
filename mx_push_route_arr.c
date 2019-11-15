@@ -9,8 +9,13 @@ void mx_push_route_arr(t_route_arr **route_arr, t_route *route) {
         return;
     }
 
-    while (temp -> next != NULL) 
+    while (temp -> next != NULL) {
+    	if (!mx_route_cmp(temp -> route, route)) {
+            free(back);
+    		return;
+        }
         temp = temp -> next;
+    }
 
     temp -> next = back;
 }

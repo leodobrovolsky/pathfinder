@@ -36,6 +36,7 @@ int main (int argc, char **argv) {
     // for (int i = 0; i < lines_number * 2; i += 2)
     //     printf("%s %s\n", path[i] -> island1, path[i] -> island2);
     // printf ("Else:\n");
-    system("leaks -q a.out");
+    
+    //system("leaks -q a.out");
 }
 
