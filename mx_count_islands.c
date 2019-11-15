@@ -5,25 +5,19 @@ int mx_count_islands(char **lines, int lines_number) {
     char **islands_arr = (char**)malloc(sizeof(char*) * lines_number * 2);
     char *island1 = NULL;
     char *island2 = NULL;
-    int len_island1 = 0;
-    int len_island2 = 0;
+    char *dist = NULL;
 
     
     for (int i = 0; i < lines_number * 2; i++)
     	islands_arr[i] = NULL;
 
     for (int i = 0; i < lines_number; i++) {
-	    len_island1 = mx_get_char_index(lines[i], '-');
-	    len_island2 = mx_get_char_index(lines[i], ',') - len_island1 - 1;
-
-	    island1 = mx_strndup(lines[i], len_island1);
+        mx_get_from_line(lines[i], &island1, &island2, &dist);
 
 	    if (!mx_check_str(islands_arr, island1)) {
 	    	islands_arr[islands] = mx_strdup(island1);
 	    	islands++;
 	    }
-	    
-        island2 = mx_strndup(&lines[i][len_island1 + 1], len_island2);
         
 	    if (!mx_check_str(islands_arr, island2)) {
 	    	islands_arr[islands] = mx_strdup(island2);
@@ -32,8 +26,10 @@ int mx_count_islands(char **lines, int lines_number) {
 
         mx_strdel(&island1);
         mx_strdel(&island2); 
+        mx_strdel(&dist);
     }
     
+    mx_del_strarr(&islands_arr);
 
     return islands;
 }

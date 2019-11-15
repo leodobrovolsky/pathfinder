@@ -17,18 +17,12 @@ static bool mx_islower(int c) {
 
 bool mx_validation_line(const char *line) {
     bool result = true;
-	int len_island1 = mx_get_char_index(line, '-');
-	int len_island2 = mx_get_char_index(line, ',') - len_island1 - 1;
-	int len_dist = mx_strlen(line) - len_island1 - len_island2 - 2;
-	int i = 0;
-    
-    if (!len_island1 || !len_island2 || !len_dist)
-    	return false;
+    char *island1 = NULL;
+    char *island2 = NULL;
+    char *dist = NULL;
+    int i = 0;
 
-    char *island1 = mx_strndup(line, len_island1);
-    char *island2 = mx_strndup(&line[len_island1 + 1], len_island2);
-    char *dist = mx_strndup(&line[mx_get_char_index(line, ',') + 1], len_dist);
-
+    mx_get_from_line(line, &island1, &island2, &dist);
 
     if (!island1 || !island2 || !dist)
     	result = false;  
