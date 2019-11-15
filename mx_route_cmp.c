@@ -7,19 +7,19 @@ bool mx_route_cmp(t_route *route1, t_route *route2) {
     int j = 0;
 
     while (first && second) {
-        if (!mx_strcmp(route1 -> path -> island1, route2 -> path -> island1) 
-            && !mx_strcmp(route1 -> path -> island2, route2 -> path -> island2))
+        if (!mx_strcmp(first -> path -> island1, second -> path -> island1) 
+            && !mx_strcmp(first -> path -> island2, second -> path -> island2))
                 j++;
         i++;
         first = first -> next;
         second = second -> next;
     }
 
-    if (first || second)
+    if (first || second) 
     	return false;
     
-    if (i == j)
+    if (i == j) 
         return false;
-    else
+    else 
         return true;
 }
