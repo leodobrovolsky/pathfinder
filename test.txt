@@ -1,1 +1,5 @@
-fsdgsd
+4
+Greenland-Bananal,8
+Fraser-Greenland,10
+Bananal-Fraser,2
+Java-Fraser,5

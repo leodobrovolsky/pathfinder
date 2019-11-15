@@ -16,9 +16,10 @@ static bool mx_islower(int c) {
 }
 
 bool mx_validation_line(const char *line) {
+    bool result = true;
 	int len_island1 = mx_get_char_index(line, '-');
 	int len_island2 = mx_get_char_index(line, ',') - len_island1 - 1;
-	int len_dist = mx_strlen(line) - len_island1 - len_island2;
+	int len_dist = mx_strlen(line) - len_island1 - len_island2 - 2;
 	int i = 0;
     
     if (!len_island1 || !len_island2 || !len_dist)
@@ -30,22 +31,21 @@ bool mx_validation_line(const char *line) {
 
 
     if (!island1 || !island2 || !dist)
-    	return false;
-  
+    	result = false;  
 
     if (!mx_strcmp(island1, island2))
-    	return false;
+    	result = false; 
 
     while (island1[i]) {
     	if(!mx_isupper(island1[i]) && !mx_islower(island1[i]))
-    		return false;
+    		result = false; 
     	i++;
     }
     
     i = 0;
     while (island2[i]) {
     	if(!mx_isupper(island2[i]) && !mx_islower(island2[i]))
-    		return false;
+    		result = false; 
     	i++;
     }
 
@@ -53,13 +53,16 @@ bool mx_validation_line(const char *line) {
     i = 0;
     while (dist[i]) {
     	if (!mx_isdigit(dist[i]))
-    		return false;
+    		result = false; 
     	i++;
     }
     
+    if (!mx_super_atoi(dist))
+        result = false;
+
     mx_strdel(&island1);
     mx_strdel(&island2);
     mx_strdel(&dist);
 
-    return true;
+    return result;
 }
