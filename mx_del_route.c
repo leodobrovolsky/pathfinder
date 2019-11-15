@@ -12,4 +12,6 @@ void mx_del_route(t_route **route) {
         free(last);
         last = present;
     }
+
+    *route = NULL;
 }

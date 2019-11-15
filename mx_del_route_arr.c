@@ -10,4 +10,6 @@ void mx_del_route_arr(t_route_arr **route_arr) {
     	free(last);
     	last = present;
     }
+
+    *route_arr = NULL;
 }
