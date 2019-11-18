@@ -39,3 +39,7 @@ void mx_del_route_arr(t_route_arr **route_arr);
 void mx_del_route(t_route **route);
 bool mx_route_cmp(t_route *route1, t_route *route2);
 bool mx_fill_route(t_route_arr **route_arr, char *begin, char *end, t_path **path, int path_number);
+t_path **mx_create_arr_path(t_path **path, int index, int *path_number);
+char *mx_route_end(t_route *route);
+int mx_path_route_cmp(t_path **path, t_route *route, int path_number);
+
