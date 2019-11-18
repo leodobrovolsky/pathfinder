@@ -8,7 +8,7 @@ void mx_del_route(t_route **route) {
     t_route *present = *route;
 
     while (present) {
-        present = present -> next;
+        present = present -> path_next;
         free(last);
         last = present;
     }

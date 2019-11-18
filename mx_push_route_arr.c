@@ -1,21 +1,16 @@
 #include "pathfinder.h"
 
-void mx_push_route_arr(t_route_arr **route_arr, t_route *route) {
-    t_route_arr *back = mx_create_route_arr(route);
-    t_route_arr *temp = *route_arr;
+void mx_push_route_arr(t_route **route_arr, t_path *path) {
+    t_route *back = mx_create_route(path);
+    t_route *temp = *route_arr;
 
     if (*route_arr == NULL) {
         *route_arr = back;
         return;
     }
 
-    while (temp -> next != NULL) {
-    	if (!mx_route_cmp(temp -> route, route)) {
-            free(back);
-    		return;
-        }
-        temp = temp -> next;
-    }
+    while (temp -> route_next != NULL) 
+        temp = temp -> route_next;
 
-    temp -> next = back;
+    temp -> route_next = back;
 }

@@ -6,8 +6,8 @@ char *mx_route_end(t_route *route) {
     if (temp == NULL)
     	return NULL;
 
-    while (temp -> next != NULL)
-    	temp = temp -> next;
+    while (temp -> path_next != NULL)
+    	temp = temp -> path_next;
 
     return temp -> path -> island2;
 }

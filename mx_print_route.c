@@ -5,8 +5,8 @@ void mx_print_route(t_route *route) {
 
     while (temp) {
     	mx_print_path(temp -> path);
-    	if (temp -> next != NULL)
+    	if (temp -> path_next != NULL)
     	    mx_printstr(" -> ");
-    	temp = temp -> next;
+    	temp = temp -> path_next;
     }   
 }
