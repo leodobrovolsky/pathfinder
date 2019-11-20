@@ -36,9 +36,11 @@ int main (int argc, char **argv) {
     // printf ("Else:\n");
     // for (int i = 0; i < island_number; i++)
     //     for (int j = 0; j < island_number; j++) 
-            mx_search_route(island_arr[0], island_arr[3], path, island_number, lines_number);
+            //mx_search_route(island_arr[0], island_arr[2], path, island_number, lines_number);
+    for (int i = 0; i < lines_number; i++)
+    mx_del_path(&path[i]);
     
-    
-    //system("leaks -q a.out");
+
+    system("leaks -q a.out");
 }
 

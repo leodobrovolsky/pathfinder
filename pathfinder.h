@@ -31,7 +31,7 @@ void mx_push_route(t_route **route, t_path *path);
 void mx_push_route_arr(t_route **route_arr, t_path *path);
 void mx_print_route_arr(t_route *route_arr);
 void mx_del_route_arr(t_route **route_arr);
-void mx_del_route(t_route **route);
+void mx_del_route(t_route **route, int index);
 t_path **mx_create_arr_path(t_path **path, int index, int *path_number);
 char *mx_route_end(t_route *route);
 int mx_path_route_cmp(t_path **path, t_route *route, int path_number);
