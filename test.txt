@@ -1,4 +1,4 @@
-4
-Kyiv-Kharkiv,471
+41
+KyivKharkiv,471
 Kyiv-Warsaw,766
 Kyiv-Paris,2403

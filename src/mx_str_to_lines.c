@@ -11,7 +11,7 @@ char **mx_str_to_lines(const char *str, int *lines_number, int *island_number) {
     while (lines[i]) {
         if (!mx_validation_line(lines[i])) {
         	mx_del_strarr(&lines);
-        	mx_print_error(mx_strjoin(mx_strjoin("error: line ", mx_itoa(i)), " isn't valid"), 5);
+        	mx_print_error(mx_strjoin(mx_strjoin("error: line ", mx_itoa(i + 1)), " isn't valid"), 5);
         }
         
         i++;

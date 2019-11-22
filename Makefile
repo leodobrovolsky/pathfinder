@@ -6,6 +6,10 @@ OBJ_DIR = obj
 
 INC = inc/pathfinder.h
 
+LIB = libmx/libmx.a
+
+LIBS = libmx.a
+
 INCS = pathfinder.h
 
 SRCS = main.c mx_check_str.c mx_count_islands.c mx_create_route.c mx_del_route_arr.c mx_del_route_index.c mx_file_to_string.c mx_get_from_line.c mx_get_islands.c mx_get_pointer.c mx_get_route_end.c mx_lines_to_structs.c mx_path_cmp.c mx_print_route.c mx_print_route_arr.c mx_push_route.c mx_push_route_arr.c mx_route_clean.c mx_route_cmp.c mx_search_route.c mx_str_to_lines.c mx_sum_route_dist.c mx_validation_line.c 
@@ -19,12 +23,17 @@ OBJ =  obj/main.o obj/mx_check_str.o obj/mx_count_islands.o obj/mx_create_route.
 
 all: install clean
 install:
+	@cd libmx
+	@make -c
+	@cd ..
+	@cp $(LIB) .
 	@cp $(SRC) .
 	@cp $(INC) .
-	@clang $(CFLAG) -o $(NAME) $(SRCS) -I $(INCS) libmx.a
+	@clang $(CFLAG) -o $(NAME) $(SRCS) -I $(INCS) $(LIBS)
 uninstall: clean
 	@rm -rf $(NAME)
 clean:
 	@rm -rf $(SRCS)
 	@rm -rf $(INCS)
-reinstall: uninstall clean all
+	@rm -rf $(LIBS)
+reinstall: uninstall all
