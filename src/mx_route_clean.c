@@ -7,7 +7,6 @@ void mx_route_clean(t_route **route) {
     t_path *temp1_end = NULL;
     t_path *temp2_begin = NULL;
     t_path *temp2_end = NULL;
-    int dist_min = 0;
     int dist_sum = 0;
     int index_route = 0;
     int index_path = 0;

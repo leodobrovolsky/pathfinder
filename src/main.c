@@ -9,8 +9,6 @@ int main (int argc, char **argv) {
     char **lines = NULL;
     char **island_arr = NULL;
     t_path **path = NULL;
-    int *path_begin = NULL;
-    int *path_end = NULL;
     int island_number = 0;
     int lines_number = 0;
    
@@ -24,7 +22,7 @@ int main (int argc, char **argv) {
     
     island_arr = mx_get_islands(lines, lines_number, island_number);
  
-    path = mx_lines_to_structs(lines, lines_number, island_number);
+    path = mx_lines_to_structs(lines, lines_number);
     
     mx_search_route(path, island_arr, island_number, lines_number * 2);
 

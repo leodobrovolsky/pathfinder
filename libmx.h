@@ -1,6 +1,3 @@
-#ifndef MYHEADERS_H
-#define MYHEADERS_H
-
 
 #include <stdlib.h>
 #include <unistd.h>
@@ -8,7 +5,6 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <malloc/malloc.h>
-
 typedef struct  s_list {
     void  *data;
     struct s_list *next;
@@ -82,4 +78,4 @@ void mx_push_index(t_list **list, void *data, int index);
 void mx_pop_index(t_list **list, int index);
 void mx_print_error(const char *str, int exit_code);
 char *mx_strtrim_char(const char *str, char c);
-#endif
+

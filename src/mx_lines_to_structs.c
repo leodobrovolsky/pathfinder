@@ -1,6 +1,6 @@
 #include "pathfinder.h"
 
-t_path **mx_lines_to_structs(char **lines, int lines_number, int island_number) {
+t_path **mx_lines_to_structs(char **lines, int lines_number) {
     t_path **path = (t_path**)malloc(sizeof(t_path*) * (lines_number * 2 + 1));
     char *island1 = NULL;
     char *island2 = NULL;
