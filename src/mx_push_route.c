@@ -9,8 +9,8 @@ void mx_push_route(t_route **route, t_path *path) {
         return;
     }
     
-    while (temp -> route_next != NULL)
-    	temp = temp -> route_next;
+    // while (temp -> route_next != NULL)
+    // 	temp = temp -> route_next;
 
     while (temp -> path_next != NULL) 
         temp = temp -> path_next;

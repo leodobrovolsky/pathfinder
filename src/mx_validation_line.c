@@ -25,11 +25,12 @@ bool mx_validation_line(const char *line) {
     mx_get_from_line(line, &island1, &island2, &dist);
 
     if (!island1 || !island2 || !dist)
-    	result = false;  
-
+    	return false;  
+   
+   
     if (!mx_strcmp(island1, island2))
     	result = false; 
-
+   
     while (island1[i]) {
     	if(!mx_isupper(island1[i]) && !mx_islower(island1[i]))
     		result = false; 
@@ -57,6 +58,6 @@ bool mx_validation_line(const char *line) {
     mx_strdel(&island1);
     mx_strdel(&island2);
     mx_strdel(&dist);
-
+    
     return result;
 }

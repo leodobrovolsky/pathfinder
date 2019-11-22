@@ -1,6 +1,4 @@
-if [[ $1 == "compile" ]]; then
-	make uninstall
-	make
-fi
+rm $1
+touch $1
 clang *.c libmx.a
 ./a.out $1
