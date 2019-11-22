@@ -29,7 +29,7 @@ void mx_del_route_index(t_route **route, int index);
 char *mx_file_to_string(char *file);
 void mx_get_from_line(const char *line, char **island1, char **island2, char **dist);
 char **mx_get_islands(char **lines, int lines_number, int island_number);
-t_route *mx_get_pointer(t_route *route, int index);
+t_route *mx_get_pointer(t_route **route, int index);
 t_path *mx_get_route_end(t_route *route);
 t_path **mx_lines_to_structs(char **lines, int lines_number);
 bool mx_path_cmp(t_path *path1, t_path *path2, int index);

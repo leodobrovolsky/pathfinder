@@ -1,8 +1,8 @@
 #include "pathfinder.h"
 
 void mx_del_route_index(t_route **route, int index) {
-	if (!route)
-		return;
+    if (!route)
+        return;
     
     if (*route == NULL)
         return;

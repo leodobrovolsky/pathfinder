@@ -24,8 +24,18 @@ int main (int argc, char **argv) {
  
     path = mx_lines_to_structs(lines, lines_number);
     
-    mx_search_route(path, island_arr, island_number, lines_number * 2);
-
+    //mx_search_route(path, island_arr, island_number, lines_number * 2);
+    
+    t_route *route = NULL;
+    for (int i = 0; i < lines_number * 2; i++) {
+        mx_push_route_arr(&route, path[i]);
+    }
+    mx_print_route_arr(route);
+    // for (int i = 0; i < lines_number * 2; i++) {
+    //     mx_push_route_arr(&route, path[i]);
+    // }
+    mx_del_route_arr(&route);
+    system("leaks -q pathfinder");
     return 0;
 }
 

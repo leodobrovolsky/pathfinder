@@ -34,4 +34,10 @@ void mx_search_route(t_path **path, char **island_arr, int island_number, int pa
 
     mx_print_route_arr(route_arr);
     mx_del_route_arr(&route_arr);
+    free(path_arr[0]);
+    path_arr[0] = NULL;
+    free(path_arr[1]);
+    path_arr[1] = NULL;
+    free(path_arr);
+    path_arr = NULL;
 }

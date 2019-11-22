@@ -46,6 +46,7 @@ void mx_push_route_arr(t_route **route_arr, t_path *path) {
                 temp -> route_next = new_route;
                 temp = temp -> route_next;
             }
+            
         }
 
         temp = temp -> route_next;

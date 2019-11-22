@@ -1,7 +1,7 @@
 #include "pathfinder.h"
 
-t_route *mx_get_pointer(t_route *route, int index) {
-    t_route *temp = route;
+t_route *mx_get_pointer(t_route **route, int index) {
+    t_route *temp = *route;
 
     if (!temp)
     	return NULL;
