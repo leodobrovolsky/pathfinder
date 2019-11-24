@@ -7,20 +7,17 @@
 #include <fcntl.h>
 
 
-typedef struct s_path
-{
+typedef struct s_path {
 char *island1;
 char *island2;
 int dist;
 } t_path;
 
-typedef struct s_route
-{
+typedef struct s_route {
 struct s_path *path;
 struct s_route *path_next;
 struct s_route *route_next;
 } t_route;
-
 
 int main (int argc, char **argv);
 bool mx_check_str(char **arr, const char *str);

@@ -2,7 +2,7 @@ NAME = pathfinder
 
 CFLAG = -std=c11 -Wall -Wextra -Werror -Wpedantic
 
-LIBS =  libmx.a
+LIBS = libmx 
 
 INC = inc/pathfinder.h
 
