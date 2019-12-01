@@ -6,7 +6,7 @@ char **mx_str_to_lines(const char *str, int *lines_number, int *island_number) {
     int i = 1;
     *island_number = mx_super_atoi(lines[0]);
 
-    if (*island_number < 2)
+    if (*island_number <= 0)
         mx_print_error("error: line 1 is not valid", 4);
 
     while (lines[i]) {

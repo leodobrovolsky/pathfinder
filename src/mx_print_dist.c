@@ -1,6 +1,6 @@
 #include "pathfinder.h"
 
-void mx_print_route(t_route *route) {
+void mx_print_dist(t_route *route) {
     t_route *temp = route;
     int dist = 0;
     mx_printstr("\nDistance: ");

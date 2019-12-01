@@ -31,8 +31,8 @@ bool mx_validation_line(const char *line) {
     if (mx_strcmp(island1, island2) && mx_strcmp(dist, "0"))
         result = false;
 
-    if (!mx_strcmp(island1, island2) && mx_super_atoi(dist) > 0)
-        result = false;
+    //if (!mx_strcmp(island1, island2) && mx_super_atoi(dist) > 0)
+    //    result = false;
     
     return result;
 }

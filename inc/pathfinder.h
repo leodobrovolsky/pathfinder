@@ -35,6 +35,7 @@ t_path *mx_get_route_end(t_route *route);
 t_path **mx_lines_to_structs(char **lines, int lines_number);
 bool mx_path_cmp(t_path *path1, t_path *path2, int index);
 void mx_print_route(t_route *route);
+void mx_print_dist(t_route *route);
 void mx_print_route_arr(t_route *r_arr, char **island_arr, int island_number);
 void mx_push_route(t_route **route, t_path *path);
 void mx_push_route_arr(t_route **route_arr, t_path *path);
