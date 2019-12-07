@@ -3,7 +3,7 @@
 void mx_print_dist(t_route *route) {
     t_route *temp = route;
     int dist = 0;
-    mx_printstr("\nDistance: ");
+    mx_printstr("Distance: ");
     temp = route;
     if (temp -> path_next == NULL) {
         mx_printint(temp -> path -> dist);

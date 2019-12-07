@@ -15,8 +15,8 @@ void mx_print_route_arr(t_route *r_arr, char **island_arr, int island_number) {
                 while (tmp_r -> path_next != NULL) 
                     tmp_r = tmp_r -> path_next;
                 mx_printstr(tmp_r -> path -> island2);
-                mx_printchar('\n');
                 mx_print_route(tmp);
+                mx_print_dist(tmp);
                 for (int j = 0; j < 40; j++)
                     mx_printchar('=');
                 mx_printchar('\n');

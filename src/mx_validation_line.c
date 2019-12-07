@@ -25,14 +25,15 @@ bool mx_validation_line(const char *line) {
     if (!island1 || !island2 || !dist)
         return false;  
 
-    if (!check_string(island1,island2, dist))
+    if (!check_string(island1, island2, dist))
         result = false;
 
-    if (mx_strcmp(island1, island2) && mx_strcmp(dist, "0"))
+    if (mx_strcmp(island1, island2) && !mx_strcmp(dist, "0"))
         result = false;
 
-    //if (!mx_strcmp(island1, island2) && mx_super_atoi(dist) > 0)
-    //    result = false;
-    
+    if (!mx_strcmp(island1, island2) && mx_super_atoi(dist) > 0)
+       result = false;
+
+    mx_del_line(&island1, &island2, &dist);
     return result;
 }

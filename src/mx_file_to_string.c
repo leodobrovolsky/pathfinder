@@ -1,11 +1,24 @@
 #include "pathfinder.h"
 
+static void check_empty_line(char *str) {
+    char *e1 = mx_strdup("error: line ");
+    char *e2 = mx_strdup(" is not valid");
+    int k = 0;
+
+    for (int i = 0; i < mx_strlen(str) - 1; i++) {
+        if (str[i] == '\n')
+            k++;
+        if (str[i] == '\n' && str[i + 1] == '\n')
+            mx_print_error(mx_strjoin(mx_strjoin(e1, mx_itoa(k + 1)), e2), 5);
+    }
+    mx_strdel(&e1);
+    mx_strdel(&e2);
+}
+
 char *mx_file_to_string(char *file) {
     int fd = open(file, O_RDONLY);
     char *er_str = mx_strjoin("error: file ", file);
-    char *er_line = mx_strdup("error: line 0 is not valid");
     char *str = NULL;
-    int ind = 0;
 
     if (fd == -1)
         mx_print_error(mx_strjoin(er_str, " does not exist"), 2); 
@@ -13,12 +26,7 @@ char *mx_file_to_string(char *file) {
         mx_print_error(mx_strjoin(er_str, " is empty"), 3);  
     close(fd);
     str = mx_file_to_str(file);
-    if (str == NULL)
-        mx_print_error(mx_strjoin(er_str, " does not exist"), 2);      
-    for (int i = 0; i < mx_strlen(str) - 1; i++)
-        if (str[i] == '\n')
-            ind++;
-        else if (str[i] == '\n' && str[i + 1] == '\n')
-            mx_print_error(mx_replace_substr(er_line, "0", mx_itoa(ind)), 5);
+    check_empty_line(str);
+    mx_strdel(&er_str);
     return str;
 }

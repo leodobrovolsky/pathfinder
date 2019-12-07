@@ -5,7 +5,7 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include <fcntl.h>
-
+#include <stdio.h>
 
 typedef struct s_path {
 char *island1;
