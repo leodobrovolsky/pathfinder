@@ -14,10 +14,11 @@ int main (int argc, char **argv) {
     lines = mx_str_to_lines(str, &lines_number, &island_number);
     mx_strdel(&str);
     if (mx_count_islands(lines, lines_number) != island_number) 
-       mx_print_error("error: invalid number of islands", 6);
+        mx_print_error("error: invalid number of islands", 6);
     island_arr = mx_get_islands(lines, lines_number, island_number);
     path = mx_lines_to_structs(lines, lines_number);
-    mx_search_route(path, island_arr, island_number, lines_number * 2);  
+    mx_search_route(path, island_arr, island_number, lines_number * 2);
+
+    system("leaks -q pathfinder");
     return 0;
 }
-

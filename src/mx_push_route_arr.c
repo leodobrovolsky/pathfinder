@@ -1,63 +1,53 @@
 #include "pathfinder.h"
 
-// static bool route_ind(t_route *temp, t_path *path) {
-//     t_route *temp_path = temp;
-//     t_route *new_route = NULL;
+static bool path_cmp(t_path *path1, t_path *path2) {
+    if (!mx_strcmp(path1 -> island1, path2 -> island1)
+        && !mx_strcmp(path1 -> island2, path2-> island2))
+            return false;
+    return true;  
+}
 
-//     if (!mx_strcmp(path -> island1, mx_route_end(temp))) {
-//         new_route = mx_create_route(temp -> path);
-//         temp_path = temp -> path_next;
-//         if (!mx_strcmp(temp -> path -> island1, path -> island1) 
-//             || !mx_strcmp(temp -> path -> island2, path -> island2)) 
-//                 return false;
-//         while (temp_path) {
-//             if (!mx_strcmp(temp_path -> path -> island1, path -> island1) 
-//                 || !mx_strcmp(temp_path -> path -> island2, path -> island2)) 
-//                     return false;           
-//             mx_push_route(&new_route, temp_path -> path);
-//             temp_path = temp_path -> path_next;
-//         }
-//         if (!mx_strcmp(temp -> path -> island1, path -> island2))
-//             return false;
-//     }
-//     return true;
-// }
+static bool route_valid(t_route *route, t_path *path) {
+    t_route *temp = route;
 
-// static void push_func(t_route **route_arr, t_path *path) {
-//     t_route *temp = *route_arr;
-//     t_route *new_route = NULL;
+    if (!mx_strcmp(route -> path -> island1, path -> island2))
+        return false;
+    while (temp) {
+        if (!mx_strcmp(temp -> path -> island1, path -> island1)
+            || !mx_strcmp(temp -> path -> island2, path -> island2))
+                return false;
+        temp = temp -> path_next;
+    }
+    if (!mx_strcmp(mx_route_end(route), path -> island1))
+        return true;
+    return false;
+}
 
-//     for (; temp -> route_next; temp = temp -> route_next) {
-//         if (!mx_strcmp(path -> island1, mx_route_end(temp))) {
-//             new_route = mx_create_route(temp -> path);
-//             if (route_ind(temp, path)) {
-//                 mx_push_route(&new_route, path);
-//                 new_route -> route_next = temp -> route_next;
-//                 temp -> route_next = new_route;
-//                 temp = temp -> route_next;
-//             }
-//             else
-//                 mx_del_route_arr(&new_route);  
-//         }
-//     }
-//     temp -> route_next = mx_create_route(path);
-// }
-
-// void mx_push_route_arr(t_route **route_arr, t_path *path) {
-//     if (*route_arr == NULL) 
-//         *route_arr = mx_create_route(path);
-//     else
-//         push_func(route_arr, path);
-// }
-
-void mx_copy_route(t_route *route)
-
-void mx_push_route_arr(t_route **route_arr, t_path *path) {
+static void push_func(t_route **route_arr, t_path *path) {
     t_route *temp = *route_arr;
+    t_route *new_route = NULL;
+    int ind = 0;
 
     while (temp) {
-
+        if (!path_cmp(temp -> path, path) && temp -> path_next == NULL)
+                ind++;
+        if (route_valid(temp, path)) {
+            new_route = mx_copy_route(temp);
+            mx_push_route(&new_route, path);
+            new_route -> route_next = temp -> route_next;
+            temp -> route_next = new_route;
+            temp = temp -> route_next;
+        }
+        new_route = temp;
         temp = temp -> route_next;
-    }  
-    temp -> route_next = mx_create_route(path);
+    }
+    if (ind == 0)
+        new_route -> route_next = mx_create_route(path);
+}
+
+void mx_push_route_arr(t_route **route_arr, t_path *path) {
+    if (*route_arr == NULL) 
+        *route_arr = mx_create_route(path);
+    else
+        push_func(route_arr, path);
 }
